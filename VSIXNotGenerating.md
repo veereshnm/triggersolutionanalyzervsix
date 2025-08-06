@@ -12,9 +12,10 @@ Replace the existing `CallGraphExtension.csproj` with this updated version, whic
     <RootNamespace>CallGraphExtension</RootNamespace>
     <AssemblyName>CallGraphExtension</AssemblyName>
     <OutputType>Library</OutputType>
-    <GeneratePkgDefFile>false</GeneratePkgDefFile>
-    <CreateVsixContainer>true</CreateVsixContainer> <!-- Added to enable VSIX generation -->
-    <OutputPath>bin\$(Configuration)\</OutputPath> <!-- Ensures output in bin/Debug -->
+    <GeneratePkgDefFile>true</GeneratePkgDefFile> <!-- Changed to true for VSIX packaging -->
+    <CreateVsixContainer>true</CreateVsixContainer>
+    <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer> <!-- Ensure assembly is included -->
+    <OutputPath>bin\$(Configuration)\</OutputPath>
     <StartAction>Program</StartAction>
     <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
     <StartArguments>/rootSuffix Exp</StartArguments>
@@ -37,6 +38,7 @@ Replace the existing `CallGraphExtension.csproj` with this updated version, whic
     <None Update="CallGraphCommand.vsct">
       <IncludeInVSIX>true</IncludeInVSIX>
     </None>
+    <VSIXSourceItem Include="source.extension.vsixmanifest" /> <!-- Explicitly include manifest -->
   </ItemGroup>
 </Project>
 ```
